@@ -26,3 +26,17 @@ C:\Users\takeru\Source\Repos\inouelab-waseda\unilab2024\unilab2024\obj\Debug\uni
 C:\Users\takeru\Source\Repos\inouelab-waseda\unilab2024\unilab2024\obj\Debug\unilab2024.csproj.CoreCompileInputs.cache
 C:\Users\takeru\Source\Repos\inouelab-waseda\unilab2024\unilab2024\obj\Debug\unilab2024.exe
 C:\Users\takeru\Source\Repos\inouelab-waseda\unilab2024\unilab2024\obj\Debug\unilab2024.pdb
+C:\Users\takeru\source\repos\unilab2024\unilab2024\bin\Debug\unilab2024.exe.config
+C:\Users\takeru\source\repos\unilab2024\unilab2024\bin\Debug\unilab2024.exe
+C:\Users\takeru\source\repos\unilab2024\unilab2024\bin\Debug\unilab2024.pdb
+C:\Users\takeru\source\repos\unilab2024\unilab2024\obj\Debug\unilab2024.csproj.AssemblyReference.cache
+C:\Users\takeru\source\repos\unilab2024\unilab2024\obj\Debug\unilab2024.Prologue.resources
+C:\Users\takeru\source\repos\unilab2024\unilab2024\obj\Debug\unilab2024.Properties.Resources.resources
+C:\Users\takeru\source\repos\unilab2024\unilab2024\obj\Debug\unilab2024.Stage.resources
+C:\Users\takeru\source\repos\unilab2024\unilab2024\obj\Debug\unilab2024.StageSelect.resources
+C:\Users\takeru\source\repos\unilab2024\unilab2024\obj\Debug\unilab2024.Title.resources
+C:\Users\takeru\source\repos\unilab2024\unilab2024\obj\Debug\unilab2024.WorldMap.resources
+C:\Users\takeru\source\repos\unilab2024\unilab2024\obj\Debug\unilab2024.csproj.GenerateResource.cache
+C:\Users\takeru\source\repos\unilab2024\unilab2024\obj\Debug\unilab2024.csproj.CoreCompileInputs.cache
+C:\Users\takeru\source\repos\unilab2024\unilab2024\obj\Debug\unilab2024.exe
+C:\Users\takeru\source\repos\unilab2024\unilab2024\obj\Debug\unilab2024.pdb
