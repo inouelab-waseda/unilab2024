@@ -23,6 +23,7 @@ namespace unilab2024
 
             Func.LoadImg_Character();
             Func.LoadImg_DotPic();
+            Func.LoadImg_Button();
             Func.InitializeIsCleared();
 
             Application.Run(new Title());
@@ -230,6 +231,7 @@ namespace unilab2024
         //ここでのConversations[convIndex].Imgは"Teacher".
         public static Dictionary<string, Image> Img_Character = new Dictionary<string, Image>();
         public static Dictionary<string, Image> Img_DotPic = new Dictionary<string, Image>();
+        public static Dictionary <string, Image> Img_Button = new Dictionary<string, Image>();
     }
 
     public partial class Func
@@ -254,25 +256,108 @@ namespace unilab2024
                 Dictionaries.Img_DotPic[key] = Image.FromFile(file);
             }
         }
+
+        public static void LoadImg_Button()
+        {
+            string[] files = Directory.GetFiles(Directory.GetCurrentDirectory(), "Img_Button_*.png");
+            foreach (string file in files)
+            {
+                string key = Path.GetFileNameWithoutExtension(file).Replace("Img_Button_", "");
+                Dictionaries.Img_Button[key] = Image.FromFile(file);
+            }
+        }
     }
     #endregion
 
     #region 進行状況管理
-    public partial class Progress
+    public enum ConstNum
     {
-        public static bool[,] IsCleared = new bool[6, 3];
+        numWorlds = 7,
+        numStages = 3
+    }
+    public partial class ClearCheck
+    {
+        public static bool[,] IsCleared = new bool[(int)ConstNum.numWorlds, (int)ConstNum.numStages];
     }
 
     public partial class Func
     {
         public static void InitializeIsCleared()    //Main関数で呼び出す
         {
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < (int)ConstNum.numWorlds; i++)
             {
-                for(int j = 0; j < 3; j++)
+                for(int j = 0; j < (int)ConstNum.numStages; j++)
                 {
-                    Progress.IsCleared[i, j] = false;
+                    ClearCheck.IsCleared[i, j] = false;
                 }
+            }
+        }
+    }
+    #endregion
+
+    #region カスタムボタン（文字の上に画像を描画する）
+    public class CustomButton : Button
+    {
+        private Image foreImage;
+
+        public Image ForeImage
+        {
+            get { return foreImage; }
+            set
+            {
+                foreImage = value;
+                Invalidate();
+            }
+        }
+        protected override void OnPaint(PaintEventArgs pevent)
+        {
+            //ボタンのベース描画
+            base.OnPaint(pevent);
+
+            //文字の描画
+            TextRenderer.DrawText(pevent.Graphics, this.Text, this.Font, this.ClientRectangle, this.ForeColor, TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
+
+            //背景画像を文字の上に描画
+            if (this.ForeImage != null)
+            {
+                //Zoomレイアウトで背景画像を描画
+                //ボタンサイズ
+                int buttonWidth = this.Width;
+                int buttonHeight = this.Height;
+                //画像サイズ
+                int imageWidth = this.ForeImage.Width;
+                int imageHeight = this.ForeImage.Height;
+
+                //縦横比を保ちながらスケーリング
+                float scale = Math.Min((float)buttonWidth / imageWidth, (float)buttonHeight / imageHeight);
+                int scaleWidth = (int)(imageWidth * scale);
+                int scaleHeight = (int)(imageHeight * scale);
+
+                //位置調整
+                int x = (buttonWidth - scaleWidth) / 2;
+                int y = (buttonHeight - scaleHeight) / 2;
+                Rectangle destRect = new Rectangle(x, y, scaleWidth, scaleHeight);
+               
+                pevent.Graphics.DrawImage(this.ForeImage, destRect);
+            }
+        }
+
+        private Rectangle GetZoomedRectangle(Image img, Rectangle bounds)
+        {
+            float imageAspect = (float)img.Width / img.Height;
+            float controlAspect = (float)bounds.Width / bounds.Height;
+
+            if (imageAspect > controlAspect)
+            {
+                int newHeight = (int)(bounds.Width / imageAspect);
+                int yOffset = (bounds.Height - newHeight) / 2;
+                return new Rectangle(0, yOffset, bounds.Width, newHeight);
+            }
+            else
+            {
+                int newWidth = (int)(bounds.Height * imageAspect);
+                int xOffset = (bounds.Width - newWidth) / 2;
+                return new Rectangle(xOffset, 0, newWidth, bounds.Height);
             }
         }
     }

@@ -452,7 +452,7 @@ namespace unilab2024
                 pictureBox5.Visible = false;
                 pictureBox6.Visible = false;
                 pictureBox7.Visible = false;
-                Progress.IsCleared[_worldNumber, _level] = true;    //クリア状況管理
+                ClearCheck.IsCleared[_worldNumber, _level] = true;    //クリア状況管理
             }
             else
             {

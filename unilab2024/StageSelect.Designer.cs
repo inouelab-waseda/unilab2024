@@ -30,11 +30,9 @@
         {
             this.labelWorld = new System.Windows.Forms.Label();
             this.buttonToMap = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button_Stage1 = new System.Windows.Forms.Button();
             this.button_Stage2 = new System.Windows.Forms.Button();
             this.button_Stage3 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelWorld
@@ -60,14 +58,6 @@
             this.buttonToMap.Text = "学年選択に戻る";
             this.buttonToMap.UseVisualStyleBackColor = false;
             this.buttonToMap.Click += new System.EventHandler(this.buttonToMap_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1536, 900);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
             // 
             // button_Stage1
             // 
@@ -115,12 +105,10 @@
             this.Controls.Add(this.button_Stage1);
             this.Controls.Add(this.buttonToMap);
             this.Controls.Add(this.labelWorld);
-            this.Controls.Add(this.pictureBox1);
             this.Name = "StageSelect";
             this.Text = "StageSelect";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.StageSelect_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,7 +118,6 @@
 
         private System.Windows.Forms.Label labelWorld;
         private System.Windows.Forms.Button buttonToMap;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button_Stage1;
         private System.Windows.Forms.Button button_Stage2;
         private System.Windows.Forms.Button button_Stage3;

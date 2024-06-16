@@ -25,6 +25,9 @@ namespace unilab2024
 
             bmpPB1 = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             pictureBox1.Image = bmpPB1;
+
+            this.KeyDown += new KeyEventHandler(Prologue_KeyDown);
+            this.KeyPreview = true;
         }
         #endregion
 
@@ -105,6 +108,21 @@ namespace unilab2024
         private void buttonToMap_Click(object sender, EventArgs e)
         {
             Func.CreateWorldMap(this);
+        }
+        #endregion
+
+        #region ストーリースキップ用
+        //public Prologue関数内に以下を追記
+        //this.KeyDown += new KeyEventHandler(Prologue_KeyDown);
+        //this.KeyPreview = true;
+        private void Prologue_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.M)
+            {
+                buttonToMap.Visible = true;
+                buttonToMap.Enabled = true;
+                return;
+            }
         }
         #endregion
     }
